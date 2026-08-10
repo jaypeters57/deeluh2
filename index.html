@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deeluh — The intelligent operating system for legal practice</title>
+<title>Deeluh</title>
 <link rel="icon" type="image/png" href="/assets/images/deeluh-app-icon-teal.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,107 +93,104 @@
     padding: 13rem 1.5rem 6rem;
     background: linear-gradient(160deg, var(--brand-primary) 0%, var(--brand-primary-hover) 100%);
     overflow: hidden;
+    isolation: isolate;
   }
 
-  /* ==========================================================
-     APPLE-STYLE AURORA — soft, blended, slowly drifting color
-     fields (screen blend mode), instead of separate visible blobs
-     ========================================================== */
-     .hero {
-    isolation: isolate; /* keeps the blend modes contained to this section */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.5px);
+    background-size: 26px 26px;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  .hero__aurora {
+  /* faint grid lines, ~5% opacity */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 120px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 120px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero__mesh {
     position: absolute;
     border-radius: 50%;
-    filter: blur(110px);
+    filter: blur(90px);
     pointer-events: none;
     z-index: 0;
-    mix-blend-mode: screen; /* overlapping colors brighten/blend into each other, like Apple's glow */
-    will-change: transform;
   }
 
-  .hero__aurora--one {
-    width: 60vw;
-    height: 60vw;
-    max-width: 780px;
-    max-height: 780px;
-    top: -20%;
-    left: -10%;
-    background: radial-gradient(circle, rgba(188, 91, 60, 0.55) 0%, transparent 70%);
-    animation: aurora-drift-a 34s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  /* each blob travels a slow, wide loop around the section — staggered
+     timing/paths so they never feel like they're moving in sync */
+  .hero__mesh--one {
+    width: 620px;
+    height: 620px;
+    top: -220px;
+    left: -120px;
+    background: radial-gradient(circle, rgba(188, 91, 60, 0.42) 0%, transparent 70%);
+    animation: mesh-drift-a 22s ease-in-out infinite;
   }
 
-  .hero__aurora--two {
-    width: 55vw;
-    height: 55vw;
-    max-width: 700px;
-    max-height: 700px;
-    top: -10%;
-    right: -15%;
-    background: radial-gradient(circle, rgba(15, 61, 58, 0.6) 0%, transparent 70%);
-    animation: aurora-drift-b 40s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    animation-delay: -12s;
+  .hero__mesh--two {
+    width: 520px;
+    height: 520px;
+    top: -80px;
+    right: -140px;
+    background: radial-gradient(circle, rgba(188, 91, 60, 0.32) 0%, transparent 70%);
+    animation: mesh-drift-b 26s ease-in-out infinite;
+    animation-delay: -6s;
   }
 
-  .hero__aurora--three {
-    width: 50vw;
-    height: 50vw;
-    max-width: 620px;
-    max-height: 620px;
-    bottom: -25%;
-    left: 15%;
-    background: radial-gradient(circle, rgba(217, 119, 87, 0.4) 0%, transparent 70%);
-    animation: aurora-drift-a 46s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    animation-delay: -26s;
+  .hero__mesh--three {
+    width: 560px;
+    height: 560px;
+    bottom: -260px;
+    left: 30%;
+    background: radial-gradient(circle, rgba(217, 119, 87, 0.30) 0%, transparent 70%);
+    animation: mesh-drift-a 30s ease-in-out infinite;
+    animation-delay: -14s;
   }
 
-  .hero__aurora--four {
-    width: 45vw;
-    height: 45vw;
-    max-width: 560px;
-    max-height: 560px;
-    bottom: -15%;
-    right: 5%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
-    animation: aurora-drift-b 30s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    animation-delay: -18s;
+  .hero__mesh--four {
+    width: 380px;
+    height: 380px;
+    top: 30%;
+    left: 50%;
+    background: radial-gradient(circle, rgba(188, 91, 60, 0.22) 0%, transparent 70%);
+    animation: mesh-drift-b 24s ease-in-out infinite;
+    animation-delay: -10s;
   }
 
   /* long, wide, organic loops — 5 keypoints instead of a simple
      back-and-forth, so the motion never feels mechanical or like
      it's obviously "resetting" */
-  @keyframes aurora-drift-a {
-    0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
-    22%  { transform: translate(6%, 8%) scale(1.12) rotate(8deg); }
-    48%  { transform: translate(-4%, 12%) scale(0.94) rotate(-6deg); }
-    74%  { transform: translate(-8%, -4%) scale(1.08) rotate(4deg); }
-    100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+     @keyframes mesh-drift-a {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(60px, 40px) scale(1.08); }
+    50%  { transform: translate(20px, 90px) scale(0.96); }
+    75%  { transform: translate(-40px, 30px) scale(1.05); }
+    100% { transform: translate(0, 0) scale(1); }
   }
 
-  @keyframes aurora-drift-b {
-    0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
-    26%  { transform: translate(-7%, 6%) scale(0.92) rotate(-7deg); }
-    52%  { transform: translate(5%, -8%) scale(1.1) rotate(6deg); }
-    78%  { transform: translate(8%, 5%) scale(0.96) rotate(-4deg); }
-    100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  }
-
-  /* soft vignette on top of the aurora, edges gently darkened —
-     keeps focus centered on the headline, same trick Apple uses
-     behind keynote text */
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(60% 55% at 50% 35%, transparent 0%, rgba(10, 43, 41, 0.35) 100%);
-    pointer-events: none;
-    z-index: 1;
+  @keyframes mesh-drift-b {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(-50px, 60px) scale(0.95); }
+    50%  { transform: translate(-90px, -20px) scale(1.08); }
+    75%  { transform: translate(-30px, -60px) scale(1); }
+    100% { transform: translate(0, 0) scale(1); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__aurora { animation: none; }
+    .hero__mesh { animation: none; }
   }
+
+
 
   /* ==========================================================
      CONTENT — centered SaaS-style hero
@@ -603,22 +600,65 @@
      APP SCREEN RECORD DEMO SECTION
      ========================================================== */
      .portal-demo-section {
+    position: relative;
     padding: 6rem 1.5rem;
-    background-color: #fff;
+    background: linear-gradient(160deg, var(--brand-clay) 0%, var(--brand-clay-hover) 100%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* dot grid, ~7% opacity */
+  .portal-demo-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1.5px);
+    background-size: 26px 26px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* faint grid lines, ~5% opacity */
+  .portal-demo-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-image:
-      radial-gradient(40% 36% at 88% 6%, var(--brand-primary-tint) 0%, transparent 65%),
-      radial-gradient(42% 34% at 8% 96%, var(--brand-clay-tint) 0%, transparent 65%);
-    background-repeat: no-repeat;
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 120px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 120px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .portal-demo-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .portal-demo-glow--one {
+    width: 42vw; height: 42vw; max-width: 520px; max-height: 520px;
+    top: -14%; left: -8%;
+    background: radial-gradient(circle, rgba(15, 61, 58, 0.5) 0%, transparent 70%);
+  }
+  .portal-demo-glow--two {
+    width: 36vw; height: 36vw; max-width: 460px; max-height: 460px;
+    bottom: -16%; right: -6%;
+    background: radial-gradient(circle, rgba(15, 61, 58, 0.4) 0%, transparent 70%);
   }
 
   .portal-demo-frame {
+    position: relative;
+    z-index: 2;
     width: 70%;
     max-width: 1050px;
     margin: 0 auto;
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(15, 21, 25, 0.08);
-    box-shadow: 0 40px 80px -30px rgba(15, 21, 25, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.45);
   }
 
   /* ==========================================================
@@ -2719,12 +2759,12 @@
             <li><a href="solutions.html">Solutions</a></li>
             <li><a href="javascript:void(0)">Security</a></li>
             <li><a href="javascript:void(0)">Resources</a></li>
-            <li><a href="javascript:void(0)">Company</a></li>
+            <li><a href="company.html">Company</a></li>
           </ul>
       
           <div class="navbar__actions">
             <a href="#demo" class="navbar__btn navbar__btn--ghost">Book a Demo</a>
-            <a href="#waitlist" class="navbar__btn navbar__btn--primary">Get Started</a>
+            <a href="#" class="navbar__btn navbar__btn--primary">Get Started</a>
           </div>
       
           <button class="navbar__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
@@ -2740,11 +2780,11 @@
               <li><a href="solutions.html">Solutions</a></li>
               <li><a href="javascript:void(0)">Security</a></li>
               <li><a href="javascript:void(0)">Resources</a></li>
-              <li><a href="javascript:void(0)">Company</a></li>
+              <li><a href="company.html">Company</a></li>
             </ul>
             <div class="navbar__mobile-actions">
               <a href="#demo" class="navbar__btn navbar__btn--ghost">Book a Demo</a>
-              <a href="#waitlist" class="navbar__btn navbar__btn--primary">Get Started</a>
+              <a href="#" class="navbar__btn navbar__btn--primary">Get Started</a>
             </div>
           </div>
         </div>
@@ -2782,10 +2822,10 @@
 <!-- HERO SECTION -->
 
 <section class="hero">
-  <span class="hero__aurora hero__aurora--one"></span>
-  <span class="hero__aurora hero__aurora--two"></span>
-  <span class="hero__aurora hero__aurora--three"></span>
-  <span class="hero__aurora hero__aurora--four"></span>
+  <span class="hero__mesh hero__mesh--one"></span>
+  <span class="hero__mesh hero__mesh--two"></span>
+  <span class="hero__mesh hero__mesh--three"></span>
+  <span class="hero__mesh hero__mesh--four"></span>
       
         <div class="hero__inner">
           <!-- <span class="hero__badge">Built for Nigerian law firms</span> -->
