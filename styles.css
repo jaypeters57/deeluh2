@@ -5,19 +5,21 @@
     --brand-clay: #BC5B3C;
     --brand-clay-hover: #a04a30;
     --brand-clay-tint: #f7ece7;
+    --brand-clay-light: #e7b7a4;
     --ink: #0f1519;
     --ink-2: #354149;
     --ink-3: #5c6971;
 
+
     --font-display: "Hedvig Letters Serif", serif;
     --font-body: "Manrope", sans-serif;
+    --shine-cycle: 5s;   /* ← add this line */
   }
 
   * { box-sizing: border-box; }
   body { margin: 0; font-family: var(--font-body); color: var(--ink); background: #fff; }
-  h2 { overflow-wrap: normal; word-break: keep-all; } 
- 
- 
+  h2, h3 { overflow-wrap: normal; word-break: keep-all; }
+
  
  
  
