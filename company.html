@@ -35,9 +35,19 @@
   .about-deeluh__stage1 {
     position: relative;
     z-index: 2;
-    padding: 7rem 1.5rem 2rem;
+    padding: 10rem 1.5rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
+  }
+
+  .about-deeluh__stage1 h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 auto;
+    text-align: center;
   }
 
   .about-deeluh__eyebrow {
@@ -227,7 +237,9 @@
     .about-deeluh__cards { grid-template-columns: 1fr; gap: 1.25rem; }
     .about-deeluh__gap { height: 4rem; }
     .about-deeluh__statement { max-width: 88%; }
+    .about-deeluh__stage1 h2 { margin: 60px 0px 0px auto; }
   }
+  
 
   /* ==========================================================
      MOBILE
@@ -246,7 +258,14 @@
       height: clamp(200px, 46vh, 360px);
       width: clamp(200px, 46vh, 360px);
       left: 58%; /* center-weighted, slightly toward the right */
+
     }
+
+    .about-deeluh__pin {
+    height: 70vh;
+  }
+
+
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -259,7 +278,6 @@
     /* reduced motion: show the full statement immediately, no
        pinning, nothing hidden from the user */
     .about-deeluh__runway { height: auto; }
-    .about-deeluh__pin { position: static; height: auto; padding: 4rem 1.5rem; }
     .about-deeluh__statement .letter {
       opacity: 1;
       transform: none;
@@ -1196,7 +1214,8 @@
 
   <!-- STAGE 1 -->
   <div class="about-deeluh__stage1">
-    <span class="about-deeluh__eyebrow">About Deeluh</span>
+    <!-- <span class="about-deeluh__eyebrow">About Deeluh</span> -->
+      <h2>About Deeluh</h2><br><br><br>
 
     <div class="about-deeluh__cards">
       <article class="about-deeluh__card">
@@ -1724,9 +1743,9 @@
       <div class="footer-col">
         <p class="footer-col__title">Product</p>
         <ul>
-          <li><a href="index.html#what">What Deeluh does</a></li>
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="#what">What Deeluh does</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="javascript:void(0)">Security</a></li>
         </ul>
       </div>
@@ -1734,8 +1753,8 @@
       <div class="footer-col">
         <p class="footer-col__title">Company</p>
         <ul>
-          <li><a href="javascript:void(0)">About</a></li>
-          <li><a href="mailto:hello@deeluh.com">Contact sales</a></li>
+          <li><a href="company.html">About</a></li>
+          <li><a href="company.html#contactSection">Contact sales</a></li>
           <li><a href="mailto:hello@deeluh.com">hello@deeluh.com</a></li>
           <li><a href="https://linkedin.com/company/deeluh" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
@@ -1744,10 +1763,10 @@
       <div class="footer-col">
         <p class="footer-col__title">Legal</p>
         <ul>
-          <li><a href="javascript:void(0)">Privacy policy</a></li>
-          <li><a href="javascript:void(0)">Terms of service</a></li>
-          <li><a href="javascript:void(0)">NDPA 2023 statement</a></li>
-          <li><a href="javascript:void(0)">Data processing addendum</a></li>
+          <li><a href="https://docs.google.com/document/d/1c-md859V6obcESRwpXy0kAwXPGtmj-fd6AdDDvtnq5Q/edit?usp=sharing">Privacy policy</a></li>
+          <li><a href="https://docs.google.com/document/d/1gVnUsOua3eEcUrE6pWVas3ohWTuopRg7c0Neukb6ZKk/edit?usp=sharing">Terms of service</a></li>
+          <li><a href="https://docs.google.com/document/d/11p2g2rMjBtaresTevkxNR4pSzg9xlmbRGU0pHHDDfUU/edit?usp=sharing">NDPA 2023 statement</a></li>
+          <li><a href="https://docs.google.com/document/d/1ZMK4GnUCulM9PX5qDvRsFVDOjK42fZCY5RENJ_HLqt8/edit?usp=sharing">Data processing addendum</a></li>
         </ul>
       </div>
 
