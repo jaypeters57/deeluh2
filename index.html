@@ -3984,18 +3984,10 @@
 </section>
 
 <script>
-  // const waitlistSection = document.getElementById('waitlist');
-  // const waitlistForm = document.getElementById('waitlistForm');
-
-  // waitlistForm.addEventListener('submit', (e) => {
-  //   e.preventDefault();
-    
-  //   waitlistSection.classList.add('is-submitted');
-  // });
 
   const waitlistSection = document.getElementById('waitlist');
 const waitlistForm = document.getElementById('waitlistForm');
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxrM4OFDHd6yGsWIPrdc_9VJlXrSyB5zFQurdel7OSWsdio1jBqNYAZhsWxa7xRYnH0QA/exec'; // paste your real URL here
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxrM4OFDHd6yGsWIPrdc_9VJlXrSyB5zFQurdel7OSWsdio1jBqNYAZhsWxa7xRYnH0QA/exec'; 
 
 waitlistForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -4009,8 +4001,7 @@ waitlistForm.addEventListener('submit', async (e) => {
   try {
     await fetch(SHEET_URL, {
       method: 'POST',
-      mode: 'no-cors', // Apps Script doesn't return proper CORS headers, so we can't read the response —
-                        // but the request still goes through and the row still gets added
+      mode: 'no-cors', 
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({ email })
     });
