@@ -1608,7 +1608,7 @@
   const submitBtn = document.getElementById('contactSubmitBtn');
   const formError = document.getElementById('contactFormError');
 
-  /* ---- entrance ---- */
+
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1619,7 +1619,7 @@
   }, { threshold: 0.1 });
   revealObserver.observe(section);
 
-  /* ---- validation ---- */
+
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function setFieldError(name, hasError) {
@@ -1663,13 +1663,8 @@
     return isValid;
   }
 
-  /* ---- submission ----
-     Wired the same way as the waitlist form: a Google Apps
-     Script Web App endpoint that appends a row to a Sheet.
-     Replace SHEET_URL with your own deployment URL, and make
-     sure your Apps Script's doPost() reads all six fields below
-     (see the waitlist wiring notes for the full script). */
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwK3iu4iTqlNGt1D3yfVHtS0pqu7MInCCHj0ALt5VbL60z3XvFuad90yddeKAL-jOJy5Q/exec';
+
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzdmwTtfHOi1f22CM8NjGJnDDqDjFu-x5noF5LA3HFN05tiNi1FNe_mSDNaJOQEGXp8/exec';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -1693,8 +1688,7 @@
     try {
       await fetch(SHEET_URL, {
         method: 'POST',
-        mode: 'no-cors', // Apps Script doesn't return CORS headers — the row
-                          // still gets written, we just can't read the response
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(payload)
       });
@@ -1707,13 +1701,15 @@
     }
   });
 
-  // clear a field's error state as soon as the visitor starts fixing it
+
   ['firstName', 'lastName', 'email', 'firmSize', 'enquiry'].forEach((name) => {
     const el = form.querySelector(`#${name}`);
     if (el) el.addEventListener('input', () => setFieldError(name, false));
   });
 })();
 </script>
+
+
 
 <!-- END OF CONTACT SECTION -->
 
@@ -1743,9 +1739,9 @@
       <div class="footer-col">
         <p class="footer-col__title">Product</p>
         <ul>
-          <li><a href="#what">What Deeluh does</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="index.html#what">What Deeluh does</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
           <li><a href="javascript:void(0)">Security</a></li>
         </ul>
       </div>
