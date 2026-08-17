@@ -416,78 +416,128 @@
 </head>
 <body>
 
- <!-- NAVBAR -->ß
+ <!-- NAVBAR -->
 
-    <nav class="navbar" id="siteNavbar">
-        <div class="navbar__inner">
-      
-          <a href="index.html" class="navbar__logo">
-            <img src="assets/images/deeluh-logo-white.png" alt="Deeluh" class="navbar__logo--white">
-            <img src="assets/images/deeluh-logo.png" alt="Deeluh" class="navbar__logo--color">
-          </a>
-      
-          <ul class="navbar__menu">
-            <li><a href="product.html">Product</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="javascript:void(0)">Security</a></li>
-            <li><a href="resources.html">Resources</a></li>
-            <li><a href="company.html">Company</a></li>
-          </ul>
-      
-          <div class="navbar__actions">
-            <a href="#" class="navbar__btn navbar__btn--ghost">Book a Demo</a>
-            <a href="#" class="navbar__btn navbar__btn--primary">Get Started</a>
-          </div>
-      
-          <button class="navbar__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-      
+ <nav class="navbar" id="siteNavbar">
+  <div class="navbar__inner">
+
+    <a href="index.html" class="navbar__logo">
+      <img src="assets/images/deeluh-logo-white.png" alt="Deeluh" class="navbar__logo--white">
+      <img src="assets/images/deeluh-logo.png" alt="Deeluh" class="navbar__logo--color">
+    </a>
+
+    <ul class="navbar__menu">
+      <li><a href="product.html">Product</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+
+      <li class="navbar__item--dropdown">
+        <button class="navbar__dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          Security
+          <svg class="navbar__dropdown-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="navbar__dropdown-panel">
+          <a href="javascript:void(0)" class="navbar__dropdown-link">Security Overview</a>
+          <a href="legal.html" class="navbar__dropdown-link">Legal</a>
         </div>
-      
-        <div class="navbar__mobile" id="navMobile">
-          <div class="navbar__mobile-inner">
-            <ul class="navbar__mobile-links">
-              <li><a href="product.html">Product</a></li>
-              <li><a href="solutions.html">Solutions</a></li>
-              <li><a href="javascript:void(0)">Security</a></li>
-              <li><a href="resources.html">Resources</a></li>
-              <li><a href="company.html">Company</a></li>
-            </ul>
-            <div class="navbar__mobile-actions">
-              <a href="#" class="navbar__btn navbar__btn--ghost">Book a Demo</a>
-              <a href="#" class="navbar__btn navbar__btn--primary">Get Started</a>
+      </li>
+
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="company.html">Company</a></li>
+    </ul>
+
+    <div class="navbar__actions">
+      <a href="#demo" class="navbar__btn navbar__btn--ghost">Book a Demo</a>
+      <a href="https://app.deeluh.com/" class="navbar__btn navbar__btn--primary">Get Started</a>
+    </div>
+
+    <button class="navbar__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+
+  <div class="navbar__mobile" id="navMobile">
+    <div class="navbar__mobile-inner">
+      <ul class="navbar__mobile-links">
+        <li><a href="product.html">Product</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+
+        <li class="navbar__mobile-dropdown" id="navLegalDropdown">
+          <button class="navbar__mobile-dropdown-trigger" type="button" aria-expanded="false" aria-controls="navLegalPanel">
+            Security
+            <svg class="navbar__mobile-dropdown-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="navbar__mobile-dropdown-panel" id="navLegalPanel">
+            <div class="navbar__mobile-dropdown-inner">
+              <a href="javascript:void(0)" class="navbar__dropdown-link">Security Overview</a>
+              <a href="legal.html" class="navbar__dropdown-link">Legal</a>
             </div>
           </div>
-        </div>
-      </nav>
+        </li>
 
-      
-      <script>
-        const navbar = document.getElementById('siteNavbar');
-        const burger = document.getElementById('navBurger');
-      
-        // swap green → white once scrolled past a small threshold
-        function updateNavbarScrollState() {
-          navbar.classList.toggle('is-scrolled', window.scrollY > 40);
-        }
-        window.addEventListener('scroll', updateNavbarScrollState, { passive: true });
-        updateNavbarScrollState();
-      
-        // hamburger toggle
-        burger.addEventListener('click', () => {
-          const isOpen = navbar.classList.toggle('is-open');
-          burger.setAttribute('aria-expanded', String(isOpen));
-        });
-      
-        // close the mobile menu if the viewport grows back past the breakpoint
-        window.addEventListener('resize', () => {
-          if (window.matchMedia('(min-width: 981px)').matches) {
-            navbar.classList.remove('is-open');
-            burger.setAttribute('aria-expanded', 'false');
-          }
-        });
-      </script>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="company.html">Company</a></li>
+      </ul>
+      <div class="navbar__mobile-actions">
+        <a href="#demo" class="navbar__btn navbar__btn--ghost">Book a Demo</a>
+        <a href="https://app.deeluh.com/" class="navbar__btn navbar__btn--primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('siteNavbar');
+  const burger = document.getElementById('navBurger');
+
+  // swap green → white once scrolled past a small threshold
+  function updateNavbarScrollState() {
+    navbar.classList.toggle('is-scrolled', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', updateNavbarScrollState, { passive: true });
+  updateNavbarScrollState();
+
+  // hamburger toggle
+  burger.addEventListener('click', () => {
+    const isOpen = navbar.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // close the mobile menu if the viewport grows back past the breakpoint
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 981px)').matches) {
+      navbar.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<!-- LEGAL DROPDOWN (nav) — click-to-open accordion on mobile -->
+<script>
+  (function () {
+    const legalDropdown = document.getElementById('navLegalDropdown');
+    if (!legalDropdown) return;
+    const trigger = legalDropdown.querySelector('.navbar__mobile-dropdown-trigger');
+
+    trigger.addEventListener('click', () => {
+      const isOpen = legalDropdown.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // collapse the accordion if the viewport grows back into desktop
+    // width, so it doesn't stay stuck open behind the hover dropdown
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 981px)').matches) {
+        legalDropdown.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 
 <!-- END OF NAVBAR -->
 
